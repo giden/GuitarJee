@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+  <div>
+	<h:form class="menu_simple">
+	  <ul>
+		<li>
+		  <h:commandLink action="home?faces-redirect=true">
+			<h:outputText value="#{msg.linkHome}" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="addGuitar?faces-redirect=true">
+			<h:outputText value="#{msg.guitarAddLabel}" />
+		  </h:commandLink></li>
+		
+		<li>
+		  <h:commandLink action="addPerson?faces-redirect=true">
+			<h:outputText value="#{msg.personAddLabel}" />
+		  </h:commandLink></li>
+			<li>
+		  <h:commandLink action="addType?faces-redirect=true">
+			<h:outputText value="#{msg.typeAddLabel}" />
+		  </h:commandLink></li>
+		<li>
+		  <h:commandLink action="showGuitars?faces-redirect=true">
+			 <h:outputText value="#{msg.guitarAllLabel}" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="showPersons?faces-redirect=true">
+			 <h:outputText value="#{msg.personAllLabel}" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="showTypes?faces-redirect=true">
+			 <h:outputText value="#{msg.typeAllLabel}" />
+		  </h:commandLink>
+		</li>
+		<li>
+		  <h:commandLink action="sell?faces-redirect=true">
+			 <h:outputText value="#{msg.sellGuitarLabel}" />
+		  </h:commandLink>
+		</li>
+		
+		
+	</ul>
+   </h:form>
+  </div>
+</ui:composition>

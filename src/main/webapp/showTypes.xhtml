@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable styleClass="table" value="#{typeBean.allTypies}" var="item">
+				<f:facet name="header">#{msg.typeAllLabel}</f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.typeNameLabel}</f:facet>
+					<span class="details"><h:commandLink value=" #{item.name} " action="#{typeBean.showDetails}"/></span>
+					
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.typeDescriptionLabel}</f:facet>
+					<h:outputText value="#{item.description}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.action}</f:facet>
+					<h:commandLink value="#{msg.actionDelete}"
+						action="#{typeBean.deleteType}" />
+						<h:commandLink value=" #{msg.actionUpdate}"
+						action="#{typeBean.updateType}" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

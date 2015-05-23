@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:h="http://java.sun.com/jsf/html"
+		template="/templates/default.xhtml"
+		xmlns:a4j="http://richfaces.org/a4j"
+		xmlns:rich="http://richfaces.org/rich">
+
+  <ui:define name="content">
+    <h:form id="guitarForm">
+      <h:panelGrid columns="2">
+
+	<h:outputText value="#{msg.guitarYearLabel}" />
+	<rich:inputNumberSlider id="year" value="#{guitarBean.guitar.year}" width="250" minValue="1950" maxValue="2015" step="1" showArrows="false" showTooltip="false" >
+		 <f:ajax execute="@this" render="messages beanState" />
+	</rich:inputNumberSlider>
+
+	<h:outputText value="#{msg.guitarMakerLabel}" />
+	<h:inputText id="maker" value="#{guitarBean.guitar.maker}" size="35" >
+		 <f:ajax execute="@this" render="messages beanState" />
+	</h:inputText>
+
+
+
+	<h:outputText value="#{msg.guitarTypeNameLabel}" />
+	<h:selectOneMenu id="type" value="#{guitarBean.typeId}">
+	  <f:selectItems value="#{typeBean.allTypies}" var="type"
+			 itemValue="#{type.id}" itemLabel="#{type.name}" />
+	  <f:ajax execute="@this" render="messages beanState" />
+	</h:selectOneMenu>
+	
+      </h:panelGrid>
+
+      <h:commandButton value="#{msg.personFormOKButton}"
+		       action="#{guitarBean.update}" />
+
+      <h:panelGrid>
+	<h:messages for="" />
+	<h:messages id="messages" showDetail="#{true}"
+		    showSummary="#{false}" />
+      </h:panelGrid>
+
+			<h:panelGrid id="beanState" columns="2">
+			  <h:outputText value="#{msg.guitarYearLabel}" />
+			  <h:outputText id="yearOutput" value="#{guitarBean.guitar.year}" />
+
+			  <h:outputText value="#{msg.guitarMakerLabel}" />
+			  <h:outputText id="makerOutput" value="#{guitarBean.guitar.maker}" />
+
+			  <h:outputText value="#{msg.guitarTypeNameLabel}" />
+			  <h:outputText id="typeOutput"
+					value="#{guitarBean.typeId}" />
+			</h:panelGrid>
+
+
+    </h:form>
+
+  </ui:define>
+</ui:composition>

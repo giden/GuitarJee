@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is not required if you don't need any extra configuration. -->
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	      xsi:schemaLocation="
+				  http://java.sun.com/xml/ns/javaee
+				  http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+  <application>
+    <resource-bundle>
+      <base-name>com.example.guitar.messages</base-name>
+      <var>msg</var>
+    </resource-bundle>
+
+    <message-bundle>com.example.guitar.errormessages</message-bundle>
+
+    <locale-config>
+      <default-locale>pl</default-locale>
+      <supported-locale>pl</supported-locale>
+      <supported-locale>en</supported-locale>
+    </locale-config>
+
+  </application>
+
+  <navigation-rule>
+    <from-view-id>home.xhtml</from-view-id>
+    <navigation-case>
+      <from-action>#{navigationController.processPage1}</from-action>
+      <from-outcome>page</from-outcome>
+      <to-view-id>showGuitars.jsf</to-view-id>
+    </navigation-case>
+    <navigation-case>
+      <from-action>#{navigationController.processPage2}</from-action>
+      <from-outcome>page</from-outcome>
+      <to-view-id>addGuitar.jsf</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+</faces-config>

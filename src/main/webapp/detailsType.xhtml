@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable styleClass="table" value="#{typeBean.guitars}" var="item">
+				<f:facet name="header">Guitars of #{typeBean.typeToShow.name}</f:facet>
+				<h:column>
+					<f:facet name="header">Tunning</f:facet>
+					<h:outputText value="#{item.maker}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">Year of production</f:facet>
+					<h:outputText value="#{item.year}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.action}</f:facet>
+					<h:commandLink value="#{msg.actionDelete}"
+						action="#{typeBean.deleteGuitar}" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+		
+			<p>
+		<h:form>
+			<h:commandButton action="showTypes?faces-redirect=true"
+				value="#{msg.typeAllLabel}" />
+			
+		</h:form>
+		</p>
+
+	</ui:define>
+
+</ui:composition>

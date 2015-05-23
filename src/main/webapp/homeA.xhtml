@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+	<ui:define name="content">
+		<p>#{msg.applicationInfo}.
+		
+		<h:form id="HomeForm">
+		Enter the name: 
+			<h:inputText id="user" value="#{home.userBean.user}" />
+			<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{home.showHome}" />
+
+		</h:form>
+		</p>
+		<h:form id="searchByYearForm">
+			<h:panelGrid columns="3">
+
+				<h:outputText value="#{msg.guitarYearLabel}" />
+				<h:inputText id="year" value="#{guitarBean.year}"
+					required="#{true}" />
+
+				<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{guitarBean.searchGuitar}" />
+				
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

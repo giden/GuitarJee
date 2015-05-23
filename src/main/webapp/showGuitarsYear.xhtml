@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default.xhtml">
+
+	<ui:define name="content">
+	<h:form id="searchForm">
+			<h:panelGrid columns="3">
+
+				<h:outputText value="#{msg.guitarTypeNameLabel}" />
+				<h:selectOneMenu id="type" value="#{guitarBean.typeId}">
+	  <f:selectItems value="#{typeBean.allTypies}" var="type"
+			 itemValue="#{type.id}" itemLabel="#{type.name}" />
+	</h:selectOneMenu>
+
+			<h:commandButton value="#{msg.personFormOKButton}"
+				action="#{guitarBean.searchGuitarType}" />	
+			</h:panelGrid>
+
+		</h:form>
+		<h:form>
+			<h:dataTable styleClass="table" value="#{guitarBean.guitarByYear}" var="item">
+				<f:facet name="header">#{msg.guitarAllLabel}</f:facet>
+				<h:column>
+					<f:facet name="header">#{msg.guitarYearLabel}</f:facet>
+					<h:outputText value="#{item.year}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.guitarMakerLabel}</f:facet>
+					<h:outputText value="#{item.maker}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.guitarTypeNameLabel}</f:facet>
+					<h:outputText value="#{item.type.name}" />
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">#{msg.guitarPersonNameLabel}</f:facet>
+					<h:outputText value="#{item.person.firstName}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">#{msg.action}</f:facet>
+					<h:commandLink value="#{msg.actionDelete}"
+						action="#{guitarBean.deleteGuitar}" />
+						<h:commandLink value=" #{msg.actionUpdate}"
+						action="#{guitarBean.updateGuitar}" />
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
